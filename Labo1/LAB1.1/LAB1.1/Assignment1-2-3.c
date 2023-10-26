@@ -41,7 +41,14 @@ int main(int argc, char *argv[]) {
 	generate_sinewave(wave2.A, wave2.f, wave2.fs, wave2.phi, N, wave2.x);
 
 	//Add waves
-	add_waves(wave1.x, wave2.x, N, wave3.x);
+	//add_waves(wave1.x, wave2.x, N, wave3.x);
+
+	//print values wave
+	for (int i = 0; i < N; i++)
+	{
+		printf("x(%d)= %f\n\r", i, wave1.x[i]);
+	}
+	printf("\n\r");
 
 	//print values wave
 	for (int i = 0; i < N; i++)

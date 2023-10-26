@@ -13,10 +13,16 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="LABO">
+      <UniqueIdentifier>{c284cfdd-1fca-4f71-8f8d-e63b1cdcc030}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LABO\LABO1">
+      <UniqueIdentifier>{e9260a2c-debd-4e39-9f29-2a157b99fc91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Assignment1-2-3.c">
-      <Filter>Source Files</Filter>
+      <Filter>LABO\LABO1</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
