@@ -8,20 +8,23 @@
 void convolution(double*, int, double*, int, double*);
 void blockconv(double*, int, double*, int, double*, int);
 
-int L = 3;
+int L = 3;		//block size
+int M;			//
+int numblocks;	//#blocks
+
 int hlen = 3;
 int xlen = 6;
-int ylen;
-
-double* x;
-double* h;
-double* y;
+int ylen = 0;
 
 int main(int argc, char* argv[]) {
-	x = (double*)calloc(xlen, sizeof(double));	//input
-	h = (double*)calloc(hlen, sizeof(double));	//kernel
-	ylen = xlen + hlen;	// L + M
-	y = (double*)calloc(ylen, sizeof(double));
+	M = hlen - 1;
+	numblocks = xlen / L;
+
+	ylen = xlen + hlen - 1;	// L + M
+
+	double* x = (double*)calloc(xlen, sizeof(double));	//input
+	double* h = (double*)calloc(hlen, sizeof(double));	//kernel
+	double* y = (double*)calloc(ylen, sizeof(double));	//output
 
 	x[0] = 1;
 	x[1] = 2;
@@ -30,11 +33,13 @@ int main(int argc, char* argv[]) {
 	x[4] = 3;
 	x[5] = 2;
 
-	h[0] = 1;
+	h[0] = 3;
 	h[1] = 2;
-	h[2] = 3;
+	h[2] = 1;
 
-	//y = 1 4 10 16 20 20 13 6 
+	//yonline = 3 8 14 20 20 16 7 2 -> 8 waardes
+	// 
+	//yles = 1 4 10 16 20 20 13 6
 
 	blockconv(x, xlen, h, hlen, y, L);
 
@@ -65,6 +70,25 @@ int main(int argc, char* argv[]) {
 }
 
 void blockconv(double* x, int xlen, double* h, int hlen, double* y, int L) {
+
+	printf("M = %d numblocks = %d ylen = %d sizeOfBlock = %d\n", M, numblocks, ylen, L);
+
+	for (int i = 0; i < numblocks; i++)
+	{
+		int offset = i * L;
+
+		// Roep de gewone 1D convolutie functie aan voor het huidige block
+		convolution(x + offset, L, h, hlen, y + offset);
+	}
+
+	if (xlen % L != 0) {
+		int offset = numblocks * L;
+		convolution(y + offset, xlen % L, h, M + 1, y + offset);
+	}
+
+
+	/*
+	* Voor mail
 	for (int offset = 0; offset < xlen; offset++)
 	{
 		//input blok maken
@@ -92,10 +116,11 @@ void blockconv(double* x, int xlen, double* h, int hlen, double* y, int L) {
 		for (int j = 0; j < L; j++) {
 			y[offset + j] += outputBlok[j];
 		}
-		
+
 		free(inputBlok);
 		free(outputBlok);
 	}
+	*/
 }
 
 void convolution(double* x, int xlen, double* h, int hlen, double* y) {
@@ -104,7 +129,7 @@ void convolution(double* x, int xlen, double* h, int hlen, double* y) {
 
 	for (int n = 0; n < Lc; n++)
 	{
-		y[n] = 0;
+		//y[n] = 0;
 
 		//kmin
 		if (n > hlen - 1) {

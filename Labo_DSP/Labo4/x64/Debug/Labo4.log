@@ -1,0 +1,7 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Labo4_windowing & zero padding.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  ass4.c
+ass4.obj : error LNK2005: dft already defined in ass3.obj
+ass4.obj : error LNK2005: fsample already defined in ass3.obj
+ass4.obj : error LNK2005: N already defined in ass3.obj
+ass4.obj : error LNK2005: outputBins already defined in ass3.obj
+G:\My Drive\1. Thomas More\2023-2024\DSP\Labo\Digital-Signal-Processing\Labo_DSP\x64\Debug\Labo4_windowing_zero_padding.exe : fatal error LNK1169: one or more multiply defined symbols found
