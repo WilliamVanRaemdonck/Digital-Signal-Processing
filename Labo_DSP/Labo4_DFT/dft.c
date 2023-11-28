@@ -11,10 +11,10 @@ typedef struct {
 	double f;
 	double phi;
 	double* x;
-} wave;
+} signal;
 
 // Function to generate a sine wave and store it in the wave's sample array.
-void generate_sinewave(wave, int, double);
+void generate_sinewave(signal, int, double);
 
 // Function to add two arrays of samples element-wise and store the result in a third array.
 void add_waves(double*, double*, int, double*);
@@ -40,9 +40,9 @@ double* phase;
 
 int main(int argc, char* argv) {
 	// Define three wave structures for the sine waves.
-	wave wave1;
-	wave wave2;
-	wave wave3;
+	signal wave1;
+	signal wave2;
+	signal wave3;
 
 	// Initialize properties of wave1 (1 kHz sine wave).
 	wave1.A = 1;
@@ -151,7 +151,7 @@ void add_waves(double* x1, double* x2, int N, double* x3) {
 }
 
 // Function to generate a sine wave and store it in the wave's sample array.
-void generate_sinewave(wave w, int N, double fs) {
+void generate_sinewave(signal w, int N, double fs) {
 	for (int n = 0; n < N; n++) {
 		w.x[n] = w.A * sin((2 * pi) * (w.f / fs) * n + w.phi);
 	}

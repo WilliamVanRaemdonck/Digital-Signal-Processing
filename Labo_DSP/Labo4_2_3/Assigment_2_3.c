@@ -33,10 +33,10 @@ typedef struct {
 	double f;
 	double phi;
 	double* x;
-}wave;
+}signal;
 
 //double A, double f, double fs, double phi, int N, double* x
-void generate_sinewave(wave, int, double);
+void generate_sinewave(signal, int, double);
 
 //double* x1, double* x2, int N, double* x3
 void add_waves(double*, double*, int, double*);
@@ -61,7 +61,7 @@ int main(int argc, char* argv) {
 		Signal “x1”: sin(2*pi*1000*t)
 		Signal “x2”: 0,5 * sin(2*pi*2000*t + 3π/4)
 	*/
-	wave wave1;
+	signal wave1;
 
 
 	wave1.A = 1;
@@ -142,7 +142,7 @@ void add_waves(double* x1, double* x2, int N, double* x3) {
 	}
 }
 
-void generate_sinewave(wave w, int N, double fs) {
+void generate_sinewave(signal w, int N, double fs) {
 	for (int n = 0; n < N; n++)
 	{
 		w.x[n] = w.A * sin((2 * pi) * (w.f / fs) * n + w.phi);

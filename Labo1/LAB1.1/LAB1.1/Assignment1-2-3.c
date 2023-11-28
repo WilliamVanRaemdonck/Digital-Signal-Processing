@@ -11,15 +11,15 @@ typedef struct {
 	double fs;
 	double phi;
 	double* x;
-}wave;
+}signal;
 
 void generate_sinewave(double, double, double, double, int, double*);
 void add_waves(double*, double*, int, double*);
 
 int main(int argc, char *argv[]) {
-	wave wave1;
-	wave wave2;
-	wave wave3;
+	signal wave1;
+	signal wave2;
+	signal wave3;
 	int N = 8;
 
 	wave1.A = 1;
