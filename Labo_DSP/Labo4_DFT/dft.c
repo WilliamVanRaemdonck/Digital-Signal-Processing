@@ -126,6 +126,7 @@ void dft(double* x, int outputBins, double* real, double* imaginary, double* mag
 		imaginary[k] = 0.0;
 
 		for (int n = 0; n < N; n++) {
+
 			real[k] += x[n] * cos(2 * pi * (k * n) / N);
 			imaginary[k] += x[n] * sin(2 * pi * (k * n) / N);
 		}

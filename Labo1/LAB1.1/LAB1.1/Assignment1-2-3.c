@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
 	//print values wave
 	for (int i = 0; i < N; i++)
 	{
-		printf("x(%d)= %f\n\r", i, wave1.x[i]);
+		printf("x(%d)= %lf\n\r", i, wave1.x[i]);
 	}
 	printf("\n\r");
 

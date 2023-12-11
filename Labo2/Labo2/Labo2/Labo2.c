@@ -49,6 +49,7 @@ int main(int argc, char* argv[]) {
 void convolution(double* x, int xlen, double* h, int hlen, double* y) {
 	int kmin = 0, kmax = 0;
 	int L = hlen + xlen - 1;
+
 	for (int n = 0; n < L; n++)
 	{
 		y[n] = 0;

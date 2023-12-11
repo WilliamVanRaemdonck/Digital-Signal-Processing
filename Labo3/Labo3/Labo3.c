@@ -46,6 +46,7 @@ int main(int argc, char* argv[]) {
 			
 		}
 	}
+
 	//fill h
 	h[0][0] = 0;
 	h[0][1] = -1;
